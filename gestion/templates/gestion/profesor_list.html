@@ -1,0 +1,37 @@
+{% extends 'gestion/base.html' %}
+{% block title %}Listado de Profesores{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header bg-primary text-white">
+        <h2>Profesores</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Cédula</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Género</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for profesor in profesores %}
+                <tr>
+                    <td>{{ profesor.cedula }}</td>
+                    <td>{{ profesor.nombre }}</td>
+                    <td>{{ profesor.apellido }}</td>
+                    <td>{{ profesor.genero }}</td>
+                    <td>
+                        <a href="{% url 'profesor_update' profesor.cedula %}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{% url 'profesor_delete' profesor.cedula %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'profesor_create' %}" class="btn btn-success">Agregar Profesor</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'gestion/base.html' %}
+{% block title %}Listado de Mascotas{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header bg-success text-white">
+        <h2>Listado de Mascotas</h2>
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Raza</th>
+                    <th>Género</th>
+                    <th>Propietario (Cédula)</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for mascota in mascotas %}
+                <tr>
+                    <td>{{ mascota.id_mascota }}</td>
+                    <td>{{ mascota.nombre }}</td>
+                    <td>{{ mascota.raza }}</td>
+                    <td>{{ mascota.genero }}</td>
+                    <td>{{ mascota.cedula }}</td>
+                    <td>
+                        <a href="{% url 'mascota_update' mascota.id_mascota %}" class="btn btn-sm btn-warning">Editar</a>
+                        <a href="{% url 'mascota_delete' mascota.id_mascota %}" class="btn btn-sm btn-danger">Eliminar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <a href="{% url 'mascota_create' %}" class="btn btn-success">Agregar Mascota</a>
+    </div>
+</div>
+{% endblock %}

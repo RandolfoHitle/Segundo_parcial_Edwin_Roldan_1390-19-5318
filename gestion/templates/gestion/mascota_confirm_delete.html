@@ -1,0 +1,17 @@
+{% extends 'gestion/base.html' %}
+{% block title %}Eliminar Mascota{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header bg-danger text-white">
+        <h2>Eliminar Mascota</h2>
+    </div>
+    <div class="card-body">
+        <p>¿Estás seguro de que deseas eliminar la mascota "{{ mascota.nombre }}" de la raza "{{ mascota.raza }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'mascota_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}

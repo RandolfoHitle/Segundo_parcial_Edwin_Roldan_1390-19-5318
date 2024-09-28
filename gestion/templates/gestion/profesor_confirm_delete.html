@@ -1,0 +1,17 @@
+{% extends 'gestion/base.html' %}
+{% block title %}Eliminar Profesor{% endblock %}
+{% block content %}
+<div class="card">
+    <div class="card-header bg-danger text-white">
+        <h2>Eliminar Profesor</h2>
+    </div>
+    <div class="card-body">
+        <p>¿Estás seguro de que deseas eliminar al profesor "{{ profesor.nombre }} {{ profesor.apellido }}"?</p>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <a href="{% url 'profesor_list' %}" class="btn btn-secondary">Cancelar</a>
+        </form>
+    </div>
+</div>
+{% endblock %}
